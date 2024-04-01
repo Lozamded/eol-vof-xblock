@@ -131,6 +131,7 @@ class VoFXBlock(XBlock):
         scope = Scope.settings
     )
 
+
     last_submission_time = Date(
         help= "Last submission time",
         scope=Scope.user_state)
@@ -226,7 +227,7 @@ class VoFXBlock(XBlock):
                 'public/css/vof.css',
             ],
             additional_js=[
-                'public/js/vof.js',
+                'public/js/vof.js'
             ],
         )
         return frag
@@ -249,6 +250,7 @@ class VoFXBlock(XBlock):
                 'texto_header': self.texto_header,
                 'weight': self.weight,
                 'show_answers': self.show_answer,
+                
                 'theme': self.theme,
                 'nro_de_intentos': self.max_attempts
             }

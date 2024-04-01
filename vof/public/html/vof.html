@@ -1,5 +1,5 @@
 {% load i18n %}
-<div class="problem vof_block {{theme}} problems-wrapper">
+<div class="problem vof_block {{theme}} problems-wrapper" >
   <h3 class="vof-header problem-header">{{ display_name }}</h3>
   <div class="problem-progress">{{ problem_progress }}</div>
   {% if show_correctness != 'never'  or indicator_class == 'unanswered' %}
@@ -9,9 +9,9 @@
   {% endif %}
   </div>
     {% if no_mas_intentos or preguntas|length == 0 %}
-      <div class="tablagrande noclick" id="vftable2">
+      <div class="tablagrande noclick" id="VOF_{{id_especifico}}">
     {% else %}
-      <div class="tablagrande" id="vftable2">
+      <div class="tablagrande" id="VOF_{{id_especifico}}">
     {% endif %}
     {% if theme == 'Media' %}
       <div class="dtrow first">
@@ -29,26 +29,22 @@
                       <div class="dtrow">
                           <div class="dtcell1">{{value.enunciado|safe}}</div>
                           <div class="dtcell3">
-                              <div class="opcV opcV{{key}} opcion">
-                                <div class="container">
-                                  <div class="circle">
-                                      <div class="small-circle">
-                                      </div>
-                                  </div>
+                            <div class="opcV opcV{{key}} opcion">
+                              <div class="container">
+                                <div class="circle">
                                 </div>
-                                <input type="radio" class="radiovof" pregunta-id="{{ key }}" name="{{ key }}_{{ location }}" value="verdadero"/>
-                            </div>
+                              </div>
+                              <input type="radio" class="radiovof" pregunta-id="{{ key }}" name="{{ key }}_{{ location }}" value="verdadero"/>
+                          </div>
                           </div>
                           <div class="dtcell2">
-                              <div class="opcF opcF{{key}} opcion">
-                                <div class="container">
-                                  <div class="circle">
-                                      <div class="small-circle">
-                                      </div>
-                                  </div>
+                            <div class="opcF opcF{{key}} opcion">
+                              <div class="container">
+                                <div class="circle">
                                 </div>
-                                <input type="radio" class="radiovof" pregunta-id="{{ key }}" name="{{ key }}_{{ location }}" value="falso"/>
-                            </div>
+                              </div>
+                              <input type="radio" class="radiovof" pregunta-id="{{ key }}" name="{{ key }}_{{ location }}" value="falso"/>
+                          </div>
                           </div>
                       </div>
       {% endfor %}
