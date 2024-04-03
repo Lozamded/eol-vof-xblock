@@ -12,49 +12,51 @@
   {% endif %}
   </div>
     {% if no_mas_intentos or preguntas|length == 0 %}
-      <div class="tablagrande noclick" id="vftable2">
+      {% if texto_header != '' %}
+        <table class="tableSYS_VOF noclick" width="90%" id="vftable2">
+      {% else %}
+        <table class="tableSYS_VOF nothead noclick" width="90%" id="vftable2">
+      {% endif %}
     {% else %}
-      <div class="tablagrande" id="vftable2">
+      {% if texto_header != '' %}
+        <table class="tableSYS_VOF" width="90%" id="vftable2">
+      {% else %}
+        <table class="tableSYS_VOF nothead" width="90%" id="vftable2">
+      {% endif %}
     {% endif %}
     {% if theme == 'Media' %}
-      <div class="dtrow first">
-        <div class="dtcell1 first" style="text-align:center;">
-            <strong>{{ texto_header|safe }}</strong>
-        </div>
-        <div class="dtcell3 first">
-            {{ texto_verdadero }}
-        </div>
-        <div class="dtcell2 first">
-            {{ texto_falso }}
-        </div>
-      </div>
-      {% for key, value in preguntas %}
-                      <div class="dtrow">
-                          <div class="dtcell1">{{value.enunciado|safe}}</div>
-                          <div class="dtcell3">
-                              <div class="opcV opcV{{key}} opcion">
-                                <div class="container">
-                                  <div class="circle">
-                                      <div class="small-circle">
-                                      </div>
-                                  </div>
-                                </div>
-                                <input type="radio" class="radiovof" pregunta-id="{{ key }}" name="{{ key }}_{{ location }}" value="verdadero"/>
-                            </div>
-                          </div>
-                          <div class="dtcell2">
-                              <div class="opcF opcF{{key}} opcion">
-                                <div class="container">
-                                  <div class="circle">
-                                      <div class="small-circle">
-                                      </div>
-                                  </div>
-                                </div>
-                                <input type="radio" class="radiovof" pregunta-id="{{ key }}" name="{{ key }}_{{ location }}" value="falso"/>
-                            </div>
-                          </div>
-                      </div>
-      {% endfor %}
+      {% if texto_header != '' %}
+        <thead>
+          <tr>
+            <th width="80%"> <p><strong>{{ texto_header|safe }}</strong></p> </th>
+            <th width="10%"> <center><strong>{{ texto_verdadero }}</strong></center> </th>
+            <th width="10%"> <center><strong>{{ texto_falso }}</strong></center> </th>
+          </tr>
+        </thead>
+      {% endif %}
+        <tbody>
+          {% for key, value in preguntas %}
+            <tr>
+              <th> <p>{{value.enunciado|safe}}</p> </th>
+              <th>
+                <div class="opcV opcV{{key}} opcion">
+                  <div class="container">
+                    <div class="circle">
+                    </div>
+                  </div>
+                  <input type="radio" class="radiovof" pregunta-id="{{ key }}" name="{{ key }}_{{ location }}" value="verdadero"/>
+              </th>
+              <th>
+                <div class="opcF opcF{{key}} opcion">
+                  <div class="container">
+                    <div class="circle">
+                    </div>
+                  </div>
+                  <input type="radio" class="radiovof" pregunta-id="{{ key }}" name="{{ key }}_{{ location }}" value="falso"/>
+              </th>
+            </tr>
+          {% endfor %}
+        </tbody>
     {% elif theme == 'RedFid' %}
       <div class="dtrow first">
         <div class="dtcell1 first" style="text-align:center;">
@@ -86,7 +88,7 @@
                                   </div>
                                 </div>
                                 <input type="radio" class="radiovof" pregunta-id="{{ key }}" name="{{ key }}_{{ location }}" value="falso"/>
-                            </div>
+                              </div>
                           </div>
                       </div>
       {% endfor %}
@@ -116,7 +118,7 @@
                       </div>
       {% endfor %}
     {% endif %}
-    </div>
+  </table>
   <div class="divrespuestas">
       {% for key, value in respuestas.items %}
         {% if value != 'nada'%}

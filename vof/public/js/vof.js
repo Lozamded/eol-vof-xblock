@@ -79,17 +79,17 @@ function VoFXBlock(runtime, element, settings) {
 
             if(result.intentos >= result.nro_de_intentos){
                 buttonCheck.attr("disabled", true);
-                $element.find('.tablagrande').addClass('noclick');
+                $element.find('.tableSYS_VOF').addClass('noclick');
                 finalice = true;
             }
             else{
                 buttonCheck.attr("disabled", false);
-                $element.find('.tablagrande').removeClass('noclick');
+                $element.find('.tableSYS_VOF').removeClass('noclick');
             }
         }
         else{
             buttonCheck.attr("disabled", false);
-            $element.find('.tablagrande').removeClass('noclick');
+            $element.find('.tableSYS_VOF').removeClass('noclick');
         }
 
         if(finalice || (result.intentos >0 && result.nro_de_intentos <= 0)){
